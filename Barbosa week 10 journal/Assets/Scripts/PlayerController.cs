@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -9,6 +10,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private FacingDirection currentDirection;
     [SerializeField] private LayerMask layer;
+    [SerializeField] private float jumpHeight = 5;
+    [SerializeField] private List<ContactPoint2D> contacts = new List<ContactPoint2D>();
     public enum FacingDirection
     {
         left, right
@@ -31,12 +34,16 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(Input.GetAxis("Horizontal"));
         Vector2 playerInput = new Vector2(Input.GetAxis("Horizontal"),0);
         MovementUpdate(playerInput);
-        Debug.Log(IsWalking());
     }
 
     private void MovementUpdate(Vector2 playerInput)
     {
+       
         rb.AddForce(playerInput * speed);
+        if (!IsGrounded() && Input.GetKey(KeyCode.Space) )
+        {
+            rb.AddForce( new Vector2(0, jumpHeight));
+        }
     }
 
     public bool IsWalking()
@@ -51,12 +58,32 @@ public class PlayerController : MonoBehaviour
     }
     public bool IsGrounded()
     {
+        /*
         RaycastHit hit;
-        if(Physics.Raycast(transform.position,Vector2.down, out hit, layer))
+        Debug.DrawLine(transform.position, transform.position + Vector3.down * raycastDistance, Color.white);
+        Physics.Raycast(transform.position, transform.position + Vector3.down, out hit, raycastDistance, layer);
+        Debug.Log(hit.collider);
+
+        if (Physics.Raycast(transform.position, transform.position + Vector3.down, out hit, raycastDistance, layer))
+        {
+            Debug.Log(hit);
+            return true;
+        }
+        else
+        {
+            //Debug.Log("nothing");
+            Debug.Log(hit);
+            return false;
+        }
+        */
+        if (rb.GetContacts(contacts) > 1)
+        {
+            return false;
+        }
+        else
         {
             return true;
         }
-        return false;
     }
 
     public FacingDirection GetFacingDirection()
@@ -74,8 +101,6 @@ public class PlayerController : MonoBehaviour
 
             currentDirection = FacingDirection.left;
             return currentDirection;
-
-
         }
         else
             return currentDirection;
