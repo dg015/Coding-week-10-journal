@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask layer;
     [SerializeField] private float jumpHeight = 5;
     [SerializeField] private List<ContactPoint2D> contacts = new List<ContactPoint2D>();
+    [SerializeField] private int raycastDistance = 2;
     public enum FacingDirection
     {
         left, right
@@ -40,9 +41,10 @@ public class PlayerController : MonoBehaviour
     {
        
         rb.AddForce(playerInput * speed);
-        if (!IsGrounded() && Input.GetKey(KeyCode.Space) )
+        if (IsGrounded() && Input.GetKey(KeyCode.Space) )
         {
-            rb.AddForce( new Vector2(0, jumpHeight));
+
+            rb.AddForce(new Vector2(0, jumpHeight),ForceMode2D.Impulse);
         }
     }
 
@@ -58,31 +60,19 @@ public class PlayerController : MonoBehaviour
     }
     public bool IsGrounded()
     {
-        /*
+        
         RaycastHit hit;
         Debug.DrawLine(transform.position, transform.position + Vector3.down * raycastDistance, Color.white);
         Physics.Raycast(transform.position, transform.position + Vector3.down, out hit, raycastDistance, layer);
-        Debug.Log(hit.collider);
+        if (Physics2D.Raycast(transform.position, transform.position + Vector3.down, raycastDistance, layer))
+        {
+            Debug.Log("workin");
+            return true;
+        }
+        else
+        {
 
-        if (Physics.Raycast(transform.position, transform.position + Vector3.down, out hit, raycastDistance, layer))
-        {
-            Debug.Log(hit);
-            return true;
-        }
-        else
-        {
-            //Debug.Log("nothing");
-            Debug.Log(hit);
             return false;
-        }
-        */
-        if (rb.GetContacts(contacts) > 1)
-        {
-            return false;
-        }
-        else
-        {
-            return true;
         }
     }
 
