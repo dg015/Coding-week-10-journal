@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
 
         if (IsGrounded() && Input.GetKey(KeyCode.Space) )
         {
-            rb.gravityScale = 0;
+            rb.gravityScale = 1;
             //rb.AddForce(new Vector2(0, jumpHeight),ForceMode2D.Impulse); old jump
             //new jump bellow
 
@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            rb.gravityScale = 1;
+            rb.gravityScale = 0;
         }
     }
 
