@@ -1739,17 +1739,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  colider: {fileID: 0}
   speed: 4
   currentDirection: 0
   layer:
     serializedVersion: 2
     m_Bits: 64
   jumpHeight: 2
-  raycastDistance: 1
+  raycastDistance: 555
   ApexTimeJump: 2
   ApexHeightJump: 3
   terminalSpeed: 5
+  isJumping: 0
+  canJump: 0
 --- !u!4 &1433354315
 Transform:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -13,7 +14,7 @@ public class PlayerController : MonoBehaviour
     [Header("Raycast")]
     [SerializeField] private LayerMask layer;
     [SerializeField] private float jumpHeight = 5;
-    [SerializeField] private int raycastDistance = 2;
+    [SerializeField] private float raycastDistance = 2;
     [Space]
     [Space]
     [Header("Jump varaibles")]
@@ -21,6 +22,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float ApexTimeJump = 2;
     [SerializeField] private float ApexHeightJump = 2 ;
     [SerializeField] private float terminalSpeed;
+
+    [Header("Coyote time")]
+    [SerializeField] private bool isJumping;
+    [SerializeField] private bool canJump;
+
     public enum FacingDirection
     {
         left, right
@@ -71,27 +77,59 @@ public class PlayerController : MonoBehaviour
         float velocityX = rb.velocity.x;
 
 
-        if (IsGrounded() && Input.GetKey(KeyCode.Space) )
+        if (IsGrounded() && Input.GetKey(KeyCode.Space) && canJump == true) // is grounded and jumped
         {
             rb.gravityScale = 0;
             //rb.AddForce(new Vector2(0, jumpHeight),ForceMode2D.Impulse); old jump
             //new jump bellow
 
             rb.velocity = new Vector2(velocityX, jumpVelocity);
-
+            isJumping = true;
             
         }
-        else if (!IsGrounded())
+        else if (!IsGrounded()) //free falling
         {
             rb.velocity = new Vector2(velocityX, rb.velocity.y + gravity * Time.deltaTime);
             rb.gravityScale = 0;
             TerminalVelocityCheckr();
-            
+            /*
+             * Check if the person is jumping
+             */
+            if (!isJumping)
+            {
+                float CoyoteTimeMax = 0.5f;
+                float CoyoteTime;
+                CoyoteTime =+ 0.1f * Time.deltaTime;
+                if( CoyoteTime >= CoyoteTimeMax )
+                {
+                    CoyoteTime = 0;
+                    canJump = true;
+                }
+                else
+                {
+                    canJump = false;
+                }
+            }
+            else
+            {
+                canJump = false;
+            }
+
+
         }
-        else
+        else if (IsGrounded()) //chillin
         {
-            rb.gravityScale = 1;
+            isJumping = false;
+            canJump = true;
+            Debug.Log("grounded");
         }
+
+        /*Coyote time
+         * Check if the player is not longer grouded
+         * Check if player has jumped or not
+         * if not start a timer for .5 seconds
+         * during that time use a bool to allow player to jump
+        */
 
     }
 
@@ -110,7 +148,6 @@ public class PlayerController : MonoBehaviour
     public bool IsGrounded()
     {
         
-        RaycastHit hit;
         Debug.DrawLine(transform.position, transform.position + Vector3.down * raycastDistance, Color.white);
         //Physics.Raycast(transform.position, transform.position + Vector3.down, out hit, raycastDistance, layer);
         if (Physics2D.Raycast(transform.position, transform.position + Vector3.down, raycastDistance, layer))
