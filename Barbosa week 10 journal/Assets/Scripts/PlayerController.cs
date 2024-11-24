@@ -102,7 +102,6 @@ public class PlayerController : MonoBehaviour
                 {
                     canJump = true;
                 }
-
             }
             else
             {
