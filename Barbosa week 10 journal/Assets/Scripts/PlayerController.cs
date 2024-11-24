@@ -3,6 +3,8 @@ using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.Rendering;
+using static UnityEngine.UI.Image;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,10 +15,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private FacingDirection currentDirection;
     [Header("Raycast")]
     [SerializeField] private LayerMask layer;
-    [SerializeField] private float jumpHeight = 5;
     [SerializeField] private float raycastDistance = 2;
-    [Space]
-    [Space]
     [Header("Jump varaibles")]
     //jump
     [SerializeField] private float ApexTimeJump = 2;
@@ -26,6 +25,8 @@ public class PlayerController : MonoBehaviour
     [Header("Coyote time")]
     [SerializeField] private bool isJumping;
     [SerializeField] private bool canJump;
+    [SerializeField] private float CoyoteTimeMax = 2;
+    [SerializeField] private float CoyoteTime;
 
     public enum FacingDirection
     {
@@ -63,7 +64,8 @@ public class PlayerController : MonoBehaviour
         // manage the actual movement of the character.
         Vector2 playerInput = new Vector2(Input.GetAxis("Horizontal"),0);
         MovementUpdate(playerInput);
-        
+        Debug.Log(IsGrounded());
+       
     }
 
     private void MovementUpdate(Vector2 playerInput)
@@ -77,14 +79,12 @@ public class PlayerController : MonoBehaviour
         float velocityX = rb.velocity.x;
 
 
-        if (IsGrounded() && Input.GetKey(KeyCode.Space) && canJump == true) // is grounded and jumped
+        if (Input.GetKey(KeyCode.Space) && canJump == true) // is grounded and jumped
         {
             rb.gravityScale = 0;
-            //rb.AddForce(new Vector2(0, jumpHeight),ForceMode2D.Impulse); old jump
-            //new jump bellow
-
             rb.velocity = new Vector2(velocityX, jumpVelocity);
             isJumping = true;
+            canJump = false;
             
         }
         else if (!IsGrounded()) //free falling
@@ -97,41 +97,38 @@ public class PlayerController : MonoBehaviour
              */
             if (!isJumping)
             {
-                float CoyoteTimeMax = 0.5f;
-                float CoyoteTime;
-                CoyoteTime =+ 0.1f * Time.deltaTime;
-                if( CoyoteTime >= CoyoteTimeMax )
+                timer();
+                if ( CoyoteTime <= CoyoteTimeMax ) // get withing the time frame
                 {
-                    CoyoteTime = 0;
                     canJump = true;
                 }
-                else
-                {
-                    canJump = false;
-                }
+
             }
             else
             {
-                canJump = false;
+                CoyoteTime = 0;
             }
-
 
         }
         else if (IsGrounded()) //chillin
         {
+            CoyoteTime = 0;
             isJumping = false;
-            canJump = true;
-            Debug.Log("grounded");
+            canJump = true;    
         }
 
-        /*Coyote time
-         * Check if the player is not longer grouded
-         * Check if player has jumped or not
-         * if not start a timer for .5 seconds
-         * during that time use a bool to allow player to jump
-        */
 
     }
+
+    private void timer()
+    {
+        CoyoteTime += 1 * Time.deltaTime;
+        if (CoyoteTime >= CoyoteTimeMax )
+        {
+            CoyoteTime = 0;
+        }
+    }
+
 
     public bool IsWalking()
     {
@@ -147,10 +144,14 @@ public class PlayerController : MonoBehaviour
     }
     public bool IsGrounded()
     {
-        
-        Debug.DrawLine(transform.position, transform.position + Vector3.down * raycastDistance, Color.white);
-        //Physics.Raycast(transform.position, transform.position + Vector3.down, out hit, raycastDistance, layer);
-        if (Physics2D.Raycast(transform.position, transform.position + Vector3.down, raycastDistance, layer))
+
+
+        Vector2 origin = new Vector2(transform.position.x, transform.position.y - 0.5f);
+
+        RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.down, raycastDistance, layer);
+        Debug.DrawRay(origin, Vector2.down * raycastDistance, Color.red);
+
+        if (hit.collider != null)
         {
             return true;
         }
