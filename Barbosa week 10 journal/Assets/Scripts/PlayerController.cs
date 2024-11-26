@@ -11,16 +11,6 @@ using static UnityEngine.UI.Image;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("Physics")]
-    [SerializeField] private Rigidbody2D body;
-    [Header("Running")]
-    [SerializeField] private float maxSpeed = 5f;
-    [SerializeField] private float accelerationTime = 0.25f;
-    [SerializeField] private float decelerationTime = 0.15f;
-    private float accelerationRate;
-    private float decelerationRate;
-    private Vector2 velocity;
-    [SerializeField] private FacingDirection currentDirection;
 
     /*
      * Old variables
@@ -51,9 +41,44 @@ public class PlayerController : MonoBehaviour
 
     */
 
+    [Header("Physics")]
+    [SerializeField] private Rigidbody2D body;
+    [Header("Horizontal")]
+    [SerializeField] private float maxSpeed = 5f;
+    [SerializeField] private float accelerationTime = 0.25f;
+    [SerializeField] private float decelerationTime = 0.15f;
+
+    [Header("Verital")]
+    public float apexHeight = 3f;
+    public float apexTime = 5;
+    private float accelerationRate;
+    private float decelerationRate;
+
+
+    private Vector2 velocity;
+    [SerializeField] private FacingDirection currentDirection;
+    private float gravity;
+    private float InitialJumpSpeed;
+
+    [Header("Ground Check")]
+    public float groundCheckOffset = 0.5f;
+    public Vector2 groundCheckSize = new Vector2(0.4f, 0.1f);
+    public LayerMask groundCheckLayerMask;
+
+    private bool isGrounded;
+    private bool isDead = false;
+
+    private PlayerState currentState = PlayerState.idle;
+    private PlayerState previousState = PlayerState.idle;
+
     public enum FacingDirection
     {
         left, right
+    }
+
+    public enum PlayerState
+    { 
+        idle, walking, jumping, dead
     }
 
     // Start is called before the first frame update
@@ -63,6 +88,8 @@ public class PlayerController : MonoBehaviour
         //rb = GetComponent<Rigidbody2D>();
         accelerationRate = maxSpeed / accelerationTime;
         decelerationRate = maxSpeed / decelerationTime;
+        gravity = -2 * apexHeight / (apexTime * apexTime);
+        InitialJumpSpeed = 2 * apexHeight / apexTime;
     }
 
 
@@ -71,10 +98,52 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        previousState = currentState;
+
+        checkForGround();
         Vector2 playerInput = new Vector2();
         playerInput.x = Input.GetAxisRaw("Horizontal");
+
+        if(isDead)
+        {
+            currentState = PlayerState.dead;
+        }
+
+        switch(currentState)
+        {
+            case PlayerState.dead:
+                break;
+            case PlayerState.idle:
+                if (!isGrounded) currentState = PlayerState.jumping;
+                else if (velocity.x == 0) currentState = PlayerState.walking;
+                break;
+            case PlayerState.walking:
+                if (!isGrounded) currentState = PlayerState.jumping;
+                else if (velocity.x == 0) currentState = PlayerState.idle;
+                break;
+            case PlayerState.jumping:
+                if(isGrounded)
+                {
+                    if (velocity.x != 0) currentState = PlayerState.walking;
+                    else currentState = PlayerState.idle;
+                }
+                break;
+        }
+
+
         MovementUpdate(playerInput);
+        jumpUpdate();
         body.velocity = velocity;
+
+        if(!isGrounded)
+        {
+            velocity.y += gravity * Time.deltaTime;
+        }
+        else
+        {
+            velocity.y = 0;
+        }
+
        
     }
 
@@ -110,6 +179,25 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    private void jumpUpdate()
+    {
+        if ( isGrounded && Input.GetButton("Jump"))
+        {
+            velocity.y = InitialJumpSpeed;
+            isGrounded = false;
+        }
+    }
+
+    private void checkForGround()
+    {
+        isGrounded = Physics2D.OverlapBox(transform.position + Vector3.down * groundCheckOffset,groundCheckSize,0,groundCheckLayerMask);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireCube(transform.position + Vector3.down * groundCheckOffset,groundCheckSize);
+    }
+
     public bool IsWalking()
     {
         if (body.velocity.x !=0)
@@ -124,7 +212,7 @@ public class PlayerController : MonoBehaviour
     }
     public bool IsGrounded()
     {
-        return true;
+        return isGrounded;
     }
 
     public FacingDirection GetFacingDirection()
