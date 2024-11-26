@@ -6,15 +6,15 @@ public class PlayerVisuals : MonoBehaviour
     public SpriteRenderer bodyRenderer;
     public PlayerController playerController;
 
-    private readonly int isWalkingHash = Animator.StringToHash("Walking");
-    private readonly int isIdleHash = Animator.StringToHash("Idle");
-    private readonly int isDeadHash = Animator.StringToHash("Dead");
-    private readonly int isGroundedHash = Animator.StringToHash("Grounded");
+    private readonly int WalkingHash = Animator.StringToHash("Walking");
+    private readonly int IdleHash = Animator.StringToHash("Idle");
+    private readonly int DeadHash = Animator.StringToHash("Dead");
+    private readonly int jumpingHash = Animator.StringToHash("Jumping");
 
     void Update()
     {
-        animator.SetBool(isWalkingHash, playerController.IsWalking());
-        animator.SetBool(isGroundedHash, playerController.IsGrounded());
+        animator.SetBool(WalkingHash, playerController.IsWalking());
+        animator.SetBool(jumpingHash, playerController.IsGrounded());
 
         switch (playerController.GetFacingDirection())
         {
@@ -34,13 +34,16 @@ public class PlayerVisuals : MonoBehaviour
             switch (playerController.currentState)
             {
                 case PlayerController.PlayerState.idle:
-                    animator.CrossFade();
+                    animator.CrossFade(IdleHash,0);
                     break;
                 case PlayerController.PlayerState.walking:
+                    animator.CrossFade(WalkingHash, 0);
                     break;
                 case PlayerController.PlayerState.jumping:
+                    animator.CrossFade(jumpingHash, 0);
                     break;
                 case PlayerController.PlayerState.dead:
+                    animator.CrossFade(DeadHash, 0);
                     break;
                 default:
                     break;
