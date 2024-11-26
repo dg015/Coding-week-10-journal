@@ -1,0 +1,1042 @@
+fileFormatVersion: 2
+guid: c0831a940336ecd4daaeefb2c64f0314
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 48
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: digwarrior-supplement_0
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 383
+        width: 58
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6083c221292d8be45885b621a08cc62d
+      internalID: -327523809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_1
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 386
+        width: 70
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 241c1cd83e687d444b61cffc4f509e3f
+      internalID: 1235584873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_2
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 396
+        width: 38
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3f8bf644b5c5f5419df5906f09518a3
+      internalID: 1955973050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_3
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 385
+        width: 62
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 709b152e6d4836a4b8b17dd38b69f508
+      internalID: 84190594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_4
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 387
+        width: 61
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67c7e0cb6129ba0469702d85c05729bd
+      internalID: -1698302774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_5
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 388
+        width: 61
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1126fe9f364a5a4288e472e421822aa
+      internalID: 451948088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_6
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 385
+        width: 61
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0767622e113576b4e9d867a4b11895b1
+      internalID: 279788044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_7
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 322
+        width: 67
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d601a7efb02eeeb498698324cba70f07
+      internalID: 471874891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_8
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 326
+        width: 68
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e245d22255f20c4692767247cc1646e
+      internalID: 530078401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_9
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 322
+        width: 50
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7a74f939b1f7114682ff5e5904b225d
+      internalID: -186712543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_10
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 322
+        width: 66
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73e2874df74169044ac4df56e70ebd43
+      internalID: -2059738242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_11
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 322
+        width: 64
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e406f8639532934fb765aefe782dffb
+      internalID: 343226780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_12
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 320
+        width: 69
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 148ebc1f7b98fd64db1da1d97c8469c3
+      internalID: -1464653820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_13
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 322
+        width: 64
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55dde7a6e1f5c9f42b610bf8794196c1
+      internalID: 143477994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_14
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 260
+        width: 46
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c47c41521a472c41a893d78aadc2e90
+      internalID: -1884688355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_15
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 266
+        width: 53
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c696d9b0c9b8cc43bda6eae4ea90eb0
+      internalID: 813399667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_16
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 272
+        width: 66
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29e7eae548a2b344a837180bda276254
+      internalID: -1545118911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_17
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 259
+        width: 64
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 366e13f4fc0e6ed4c835cb784a9741c2
+      internalID: 1920198000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_18
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 253
+        width: 59
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff09589964af6aa4e865e5ddcfdf37ed
+      internalID: -626835249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_19
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 259
+        width: 63
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62453587cbdc01c45bcc7a73e16794eb
+      internalID: 1067875981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_20
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 242
+        width: 46
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3acfc5e9ad04ffc42921c7d28613c3a9
+      internalID: -520306041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_21
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 166
+        width: 71
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 513d9c3b773183d4bb9c971346be5051
+      internalID: 1854969589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_22
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 181
+        width: 101
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ee48314bd59dd14fa3defe24a612000
+      internalID: -1203371330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_23
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 172
+        width: 46
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f859f7fe8374f147a74f3f405d296f9
+      internalID: 106562580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_24
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 192
+        width: 77
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc2fd3bf846fd83449f7c1752611eba2
+      internalID: -724450207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_25
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 170
+        width: 60
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a0f8c00080d1b24e871f8bd51faedfc
+      internalID: -1736259645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_26
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 185
+        width: 64
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34d566e2f8912934cbaffdb654b36266
+      internalID: -363594463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_27
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 107
+        width: 58
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9b3454e5220ac1479f635159076fb5e
+      internalID: 868250600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_28
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 87
+        width: 55
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d99dc1973ab1924f89b6a98867fbcf1
+      internalID: 1099790358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_29
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 76
+        width: 62
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14a27e2db3b6d704193ad48fa1224981
+      internalID: -536055367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_30
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 115
+        width: 64
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f03d8cf71a641f64595c18a2611e9f14
+      internalID: 1082783925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_31
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 114
+        width: 64
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8a4cf3179af6984fbcad041f85f9faa
+      internalID: -1813267024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_32
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 103
+        width: 58
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69dd98b6c7fcdae42808aad4721ff7c0
+      internalID: -725576257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_33
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 92
+        width: 64
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de5147a83cbaf444297b50b1c0f762ca
+      internalID: -91757284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_34
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 13
+        width: 58
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86c7532b145f8cc4c9b4e1a002283c7c
+      internalID: 1482283765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_35
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 15
+        width: 49
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc59c1971997fcf4d8092aa224c8253f
+      internalID: -548372615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_36
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 15
+        width: 77
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad92ca7fa8b8edc4cb227e6f6e006975
+      internalID: 2100955090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_37
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 15
+        width: 77
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21d6b45013473c34ba724e67ccb96a79
+      internalID: -1626906776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_38
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 15
+        width: 62
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fda05d8a3a2655740b991c1833fba4e2
+      internalID: 610381875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_39
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 13
+        width: 46
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 700327e0384bf4b4eac44513d0f09e8b
+      internalID: -142714157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: digwarrior-supplement_40
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 13
+        width: 46
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2cfb43475cb1db42a4febf7647657aa
+      internalID: -1846728942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      digwarrior-supplement_0: -327523809
+      digwarrior-supplement_1: 1235584873
+      digwarrior-supplement_10: -2059738242
+      digwarrior-supplement_11: 343226780
+      digwarrior-supplement_12: -1464653820
+      digwarrior-supplement_13: 143477994
+      digwarrior-supplement_14: -1884688355
+      digwarrior-supplement_15: 813399667
+      digwarrior-supplement_16: -1545118911
+      digwarrior-supplement_17: 1920198000
+      digwarrior-supplement_18: -626835249
+      digwarrior-supplement_19: 1067875981
+      digwarrior-supplement_2: 1955973050
+      digwarrior-supplement_20: -520306041
+      digwarrior-supplement_21: 1854969589
+      digwarrior-supplement_22: -1203371330
+      digwarrior-supplement_23: 106562580
+      digwarrior-supplement_24: -724450207
+      digwarrior-supplement_25: -1736259645
+      digwarrior-supplement_26: -363594463
+      digwarrior-supplement_27: 868250600
+      digwarrior-supplement_28: 1099790358
+      digwarrior-supplement_29: -536055367
+      digwarrior-supplement_3: 84190594
+      digwarrior-supplement_30: 1082783925
+      digwarrior-supplement_31: -1813267024
+      digwarrior-supplement_32: -725576257
+      digwarrior-supplement_33: -91757284
+      digwarrior-supplement_34: 1482283765
+      digwarrior-supplement_35: -548372615
+      digwarrior-supplement_36: 2100955090
+      digwarrior-supplement_37: -1626906776
+      digwarrior-supplement_38: 610381875
+      digwarrior-supplement_39: -142714157
+      digwarrior-supplement_4: -1698302774
+      digwarrior-supplement_40: -1846728942
+      digwarrior-supplement_5: 451948088
+      digwarrior-supplement_6: 279788044
+      digwarrior-supplement_7: 471874891
+      digwarrior-supplement_8: 530078401
+      digwarrior-supplement_9: -186712543
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

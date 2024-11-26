@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     [Header("Running")]
     [SerializeField] private float maxSpeed = 5f;
     [SerializeField] private float accelerationTime = 0.25f;
-    [SerializeField] private float deacelerationTime = 0.15f;
+    [SerializeField] private float decelerationTime = 0.15f;
     private float accelerationRate;
     private float decelerationRate;
     private Vector2 velocity;
@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
         body.gravityScale = 0;
         //rb = GetComponent<Rigidbody2D>();
         accelerationRate = maxSpeed / accelerationTime;
-        decelerationRate = maxSpeed / decelerationRate;
+        decelerationRate = maxSpeed / decelerationTime;
     }
 
 
@@ -71,7 +71,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 playerInput = new Vector2(Input.GetAxisRaw("Horizontal"),0);
+        Vector2 playerInput = new Vector2();
+        playerInput.x = Input.GetAxisRaw("Horizontal");
         MovementUpdate(playerInput);
         body.velocity = velocity;
        
