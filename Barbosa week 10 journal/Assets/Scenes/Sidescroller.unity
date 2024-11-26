@@ -1739,13 +1739,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  speed: 4
+  speed: 2
   currentDirection: 0
   layer:
     serializedVersion: 2
     m_Bits: 64
   raycastDistance: 0.2
-  ApexTimeJump: 2
+  ApexTimeJump: 0.5
   ApexHeightJump: 3
   terminalSpeed: 100
   isJumping: 0
