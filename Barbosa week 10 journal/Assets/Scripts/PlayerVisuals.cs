@@ -13,8 +13,8 @@ public class PlayerVisuals : MonoBehaviour
 
     void Update()
     {
-        animator.SetBool(WalkingHash, playerController.IsWalking());
-        animator.SetBool(jumpingHash, playerController.IsGrounded());
+        UpdateVisuals();
+
 
         switch (playerController.GetFacingDirection())
         {
