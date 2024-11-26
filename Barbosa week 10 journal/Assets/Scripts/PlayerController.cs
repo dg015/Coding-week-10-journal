@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
         {
             currentDirection = FacingDirection.left;
         }
-        else
+        else if(playerInput.x >0)
         {
             currentDirection = FacingDirection.right;
         }
@@ -128,19 +128,7 @@ public class PlayerController : MonoBehaviour
 
     public FacingDirection GetFacingDirection()
     {
-        if (Input.GetAxis("Horizontal") > 0.1)
-        {
-            currentDirection = FacingDirection.right;
-            return currentDirection;
-            
-        }
-        if (Input.GetAxis("Horizontal") < -0.1)
-        {
-            currentDirection = FacingDirection.left;
-            return currentDirection;
-        }
-        else
-            return currentDirection;
+        return currentDirection;
     }
 
     /*
