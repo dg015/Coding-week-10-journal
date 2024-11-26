@@ -68,8 +68,8 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private bool isDead = false;
 
-    private PlayerState currentState = PlayerState.idle;
-    private PlayerState previousState = PlayerState.idle;
+    public PlayerState currentState = PlayerState.idle;
+    public PlayerState previousState = PlayerState.idle;
 
     public enum FacingDirection
     {
