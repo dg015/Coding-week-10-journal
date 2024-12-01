@@ -130,6 +130,7 @@ public class PlayerController : MonoBehaviour
             applyDash();
         }
 
+        DetectWall();
         checkForGround();
         Vector2 playerInput = new Vector2();
         playerInput.x = Input.GetAxisRaw("Horizontal");
@@ -247,6 +248,7 @@ public class PlayerController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position + Vector3.down * groundCheckOffset,groundCheckSize);
+        Gizmos.DrawWireCube(transform.position, boxSize);
     }
 
     public bool IsWalking()
@@ -343,6 +345,7 @@ public class PlayerController : MonoBehaviour
             if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
             {
                 isClimbing = true;
+
             }
         }
     }
@@ -352,6 +355,7 @@ public class PlayerController : MonoBehaviour
 
 
     /*
+     * OLD CODE
      *  private void MovementUpdate(Vector2 playerInput)
     {
         if (playerInput.x < 0)
