@@ -108,6 +108,10 @@ public class PlayerController : MonoBehaviour
     {
         previousState = currentState;
         GetDashInput();
+        if(IsDashing)
+        {
+            applyDash();
+        }
         checkForGround();
         Vector2 playerInput = new Vector2();
         playerInput.x = Input.GetAxisRaw("Horizontal");
@@ -271,17 +275,17 @@ public class PlayerController : MonoBehaviour
 
     private void applyDash()
     {
-        if(IsDashing)
+        if(IsDashing)//check if dashing
         {
-            dashDuration += Time.deltaTime;
+            dashDuration += Time.deltaTime; // increase timer
             if (currentDirection == FacingDirection.right)
             {
-
-                if (dashDuration < 1)
+                if (dashDuration < 1) // check if timer is done
                 {
                     velocity.x += accelerationRate * dashMultiplier * Time.deltaTime;
                     Debug.Log("right");
                 }
+                else // if timer is done set dashing off
                 {
                     dashDuration = 0;
                     IsDashing = false;
@@ -289,12 +293,12 @@ public class PlayerController : MonoBehaviour
             }
              else if (currentDirection == FacingDirection.left)
              {
-                if (dashDuration < 1)
+                if (dashDuration < 1)// check if timer is done
                 {
                     velocity.x += accelerationRate * (-1 * dashMultiplier) * Time.deltaTime;
                     Debug.Log("left");
                 }
-                else
+                else // if timer is done set dashing off
                 {
                     dashDuration = 0;
                     IsDashing = false;
