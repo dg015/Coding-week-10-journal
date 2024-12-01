@@ -71,6 +71,10 @@ public class PlayerController : MonoBehaviour
     public PlayerState currentState = PlayerState.idle;
     public PlayerState previousState = PlayerState.idle;
 
+    [Header("Dash")]
+    [SerializeField] private bool IsDashing;
+    [SerializeField] private float dashMultiplier;
+
     public enum FacingDirection
     {
         left, right
@@ -219,6 +223,10 @@ public class PlayerController : MonoBehaviour
     {
         return currentDirection;
     }
+
+    //Dash
+
+
 
     /*
      *  private void MovementUpdate(Vector2 playerInput)
