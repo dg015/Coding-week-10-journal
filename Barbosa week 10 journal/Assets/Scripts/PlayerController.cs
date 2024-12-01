@@ -137,8 +137,8 @@ public class PlayerController : MonoBehaviour
 
 
         checkForGround();
+        getMouseLocation();
 
-        
         Vector2 playerInput = new Vector2();
         Vector2 playerInputY = new Vector2();
         playerInputY.y = Input.GetAxisRaw("Vertical");
@@ -396,6 +396,15 @@ public class PlayerController : MonoBehaviour
 
         }
 
+    }
+
+    // RocketJump
+    private void getMouseLocation()
+    {
+        mouseLocation = Input.mousePosition;
+
+
+        
     }
       
 }
