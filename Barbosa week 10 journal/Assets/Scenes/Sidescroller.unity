@@ -1898,13 +1898,13 @@ MonoBehaviour:
   cooldownMaxTime: 3
   canDash: 1
   isClimbing: 0
-  climbSpeed: 0
-  boxSize: {x: 0, y: 0}
+  climbSpeed: 25
+  boxSize: {x: 1.65, y: 0.65}
   wallCheckerLayerMask:
     serializedVersion: 2
     m_Bits: 128
-  mouseLocation: {x: 0, y: 0, z: 0}
-  throwForce: 0
+  mouseLocation: {x: 0, y: 0}
+  throwForce: 450
   RocketCooldownTimer: 0
   RocketCooldownTimerMax: 0
 --- !u!4 &1433354315
