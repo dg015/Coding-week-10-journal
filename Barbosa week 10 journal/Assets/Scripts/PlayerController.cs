@@ -82,6 +82,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float cooldownMaxTime;
     [SerializeField] private bool canDash = true;
 
+
+    [Header("Dash")]
+    [SerializeField] private bool isClimbing;
+    [SerializeField] private float climbSpeed;
+
     public enum FacingDirection
     {
         left, right
@@ -89,7 +94,7 @@ public class PlayerController : MonoBehaviour
 
     public enum PlayerState
     { 
-        idle, walking, jumping, dead, dahsing
+        idle, walking, jumping, dead, dahsing, climbing
     }
 
     // Start is called before the first frame update
@@ -139,16 +144,20 @@ public class PlayerController : MonoBehaviour
             case PlayerState.idle:
                 if (!isGrounded) currentState = PlayerState.jumping;
                 else if (velocity.x > 0) currentState = PlayerState.walking;
+                else if (IsDashing) currentState = PlayerState.dahsing;
                 break;
             case PlayerState.walking:
                 if (!isGrounded) currentState = PlayerState.jumping;
                 else if (velocity.x == 0) currentState = PlayerState.idle;
+                else if (IsDashing) currentState = PlayerState.dahsing;
                 break;
             case PlayerState.jumping:
                 if(isGrounded)
                 {
                     if (velocity.x != 0) currentState = PlayerState.walking;
+                    else if (IsDashing) currentState = PlayerState.dahsing;
                     else currentState = PlayerState.idle;
+                    
                 }
                 break;
             case PlayerState.dahsing:
@@ -268,8 +277,6 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("got into dash timer");
             IsDashing = true;
-                    
-            
         }
     }
 

@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: digwarrior_Die
+  m_Name: Dig Warrior_Die
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -22,18 +22,14 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: -1884688355, guid: c0831a940336ecd4daaeefb2c64f0314, type: 3}
-    - time: 0.7
+    - time: 0.56666666
       value: {fileID: 813399667, guid: c0831a940336ecd4daaeefb2c64f0314, type: 3}
-    - time: 1.4666667
+    - time: 1.2833333
       value: {fileID: -1545118911, guid: c0831a940336ecd4daaeefb2c64f0314, type: 3}
-    - time: 1.4833333
-      value: {fileID: -1545118911, guid: c0831a940336ecd4daaeefb2c64f0314, type: 3}
-    - time: 1.7666667
-      value: {fileID: -1545118911, guid: c0831a940336ecd4daaeefb2c64f0314, type: 3}
-    - time: 1.7833333
+    - time: 2
       value: {fileID: -1545118911, guid: c0831a940336ecd4daaeefb2c64f0314, type: 3}
     attribute: m_Sprite
-    path: 
+    path: Visuals/Body
     classID: 212
     script: {fileID: 0}
     flags: 2
@@ -45,7 +41,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 0
+      path: 3773698977
       attribute: 0
       script: {fileID: 0}
       typeID: 212
@@ -58,14 +54,12 @@ AnimationClip:
     - {fileID: 813399667, guid: c0831a940336ecd4daaeefb2c64f0314, type: 3}
     - {fileID: -1545118911, guid: c0831a940336ecd4daaeefb2c64f0314, type: 3}
     - {fileID: -1545118911, guid: c0831a940336ecd4daaeefb2c64f0314, type: 3}
-    - {fileID: -1545118911, guid: c0831a940336ecd4daaeefb2c64f0314, type: 3}
-    - {fileID: -1545118911, guid: c0831a940336ecd4daaeefb2c64f0314, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.8
+    m_StopTime: 2.0166667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

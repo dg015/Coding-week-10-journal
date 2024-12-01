@@ -11,7 +11,7 @@ public class PlayerVisuals : MonoBehaviour
     private readonly int DeadHash = Animator.StringToHash("Dead");
     private readonly int jumpingHash = Animator.StringToHash("Jumping");
     private readonly int dashHash = Animator.StringToHash("Dashing");
-
+    private readonly int ClimbHash = Animator.StringToHash("Climbing");
 
     void Update()
     {
@@ -49,6 +49,9 @@ public class PlayerVisuals : MonoBehaviour
                     break;
                 case PlayerController.PlayerState.dahsing:
                     animator.CrossFade(dashHash, 0);
+                    break;
+                case PlayerController.PlayerState.climbing:
+                    animator.CrossFade(ClimbHash, 0);
                     break;
                 default:
                     break;
