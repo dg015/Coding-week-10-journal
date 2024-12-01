@@ -89,6 +89,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Vector2 boxSize;
     public LayerMask wallCheckerLayerMask;
 
+    [Header("RocketJump")]
+    [SerializeField] private Vector2 mouseLocation;
+    [SerializeField] private float throwForce;
+    [SerializeField] private float RocketCooldownTimer;
+    [SerializeField] private float RocketCooldownTimerMax;
     public enum FacingDirection
     {
         left, right
