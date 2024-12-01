@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
     //dash cooldown
     [SerializeField] private float cooldown;
     [SerializeField] private float cooldownMaxTime;
-    [SerializeField] private bool canDash;
+    [SerializeField] private bool canDash = true;
 
     public enum FacingDirection
     {
@@ -110,6 +110,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         previousState = currentState;
+        if (!canDash)
+        {
+            DashCooldown();
+        }
         if (canDash)
         {
             GetDashInput();
@@ -118,6 +122,7 @@ public class PlayerController : MonoBehaviour
         {
             applyDash();
         }
+
         checkForGround();
         Vector2 playerInput = new Vector2();
         playerInput.x = Input.GetAxisRaw("Horizontal");
@@ -279,7 +284,7 @@ public class PlayerController : MonoBehaviour
                 {
                     velocity.x += accelerationRate * dashMultiplier * Time.deltaTime;
                     Debug.Log("right");
-                    DashCooldown();
+                    canDash = false;
                 }
                 else // if timer is done set dashing off
                 {
@@ -293,7 +298,8 @@ public class PlayerController : MonoBehaviour
                 {
                     velocity.x += accelerationRate * (-1 * dashMultiplier) * Time.deltaTime;
                     Debug.Log("left");
-                    DashCooldown();
+                    canDash = false;
+
                 }
                 else // if timer is done set dashing off
                 {
@@ -306,14 +312,16 @@ public class PlayerController : MonoBehaviour
 
     private void DashCooldown()
     {
-        dashTime += Time.deltaTime;
-        if (dashTime >= dashTimeMax && canDash == false)
+        Debug.Log("fell here");
+        cooldown += Time.deltaTime;
+        if (cooldown >= dashTimeMax && canDash == false)
         {
             canDash = true;
-            dashTime = 0;
+            cooldown = 0;
         }
         else
         {
+
             canDash = false;
         }
     }
