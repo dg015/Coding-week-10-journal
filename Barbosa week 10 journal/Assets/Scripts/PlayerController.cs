@@ -130,8 +130,10 @@ public class PlayerController : MonoBehaviour
             applyDash();
         }
 
-        DetectWall();
+
         checkForGround();
+        DetectWall();
+        climbWall();
         Vector2 playerInput = new Vector2();
         playerInput.x = Input.GetAxisRaw("Horizontal");
 
@@ -186,10 +188,12 @@ public class PlayerController : MonoBehaviour
         }
 
         body.velocity = velocity;
-
-        if(!isGrounded)
+        if (!isClimbing)
         {
-            velocity.y += gravity * Time.deltaTime;
+            if (!isGrounded)
+            {
+                velocity.y += gravity * Time.deltaTime;
+            }
         }
         else
         {
@@ -348,6 +352,20 @@ public class PlayerController : MonoBehaviour
 
             }
         }
+        else
+        {
+            isClimbing = false;
+        }
+    }
+    private void climbWall(Vector2 playerInput)
+    {
+       if(isClimbing)
+        {
+            velocity.y += climbSpeed * playerInput.y * Time.deltaTime;
+
+
+        }
+
     }
       
 }
