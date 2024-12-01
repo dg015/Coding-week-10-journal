@@ -115,7 +115,7 @@ public class PlayerController : MonoBehaviour
                 break;
             case PlayerState.idle:
                 if (!isGrounded) currentState = PlayerState.jumping;
-                else if (velocity.x == 0) currentState = PlayerState.walking;
+                else if (velocity.x > 0) currentState = PlayerState.walking;
                 break;
             case PlayerState.walking:
                 if (!isGrounded) currentState = PlayerState.jumping;
