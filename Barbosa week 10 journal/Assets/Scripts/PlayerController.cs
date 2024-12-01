@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using static PlayerController;
 using static UnityEditor.Experimental.GraphView.GraphView;
+using static UnityEngine.LightAnchor;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 using static UnityEngine.UI.Image;
 
@@ -83,14 +84,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool canDash = true;
 
 
-    [Header("Dash")]
+    [Header("wall climb")]
     [SerializeField] private bool isClimbing;
     [SerializeField] private float climbSpeed;
     [SerializeField] private Vector2 boxSize;
     public LayerMask wallCheckerLayerMask;
 
     [Header("RocketJump")]
-    [SerializeField] private Vector3 mouseLocation;
+    [SerializeField] private Vector2 mouseLocation;
     [SerializeField] private float throwForce;
     [SerializeField] private float RocketCooldownTimer;
     [SerializeField] private float RocketCooldownTimerMax;
@@ -407,22 +408,19 @@ public class PlayerController : MonoBehaviour
         mouseLocation = Camera.main.ScreenToWorldPoint(mouseLocation);
         Debug.DrawLine(transform.position, mouseLocation);
 
-        //subtract to get direction and normalizing to set it to a lenght of 1 
-        Vector2 direction = (mouseLocation - transform.position).normalized;
+        Vector2 directionMouse =  new Vector2(mouseLocation.x - transform.position.x, mouseLocation.y - transform.position.y);
 
-
-        //get the angle using atan2 to get tangent
-        //angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        angle =  new Vector2(mouseLocation.x - transform.position.x, mouseLocation.y - transform.position.y);
-
-
-
+        angle = - directionMouse.normalized;
     }
     private void RocketJump()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
-            body.AddForce(throwForce * angle, ForceMode2D.Impulse);
+            Debug.DrawRay(transform.position, angle * throwForce, Color.blue, 1f);
+
+            Debug.Log("boom Im flying");
+            body.AddForce((10*throwForce) * angle, ForceMode2D.Force);
+
         }
     }
 }
