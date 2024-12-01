@@ -86,6 +86,8 @@ public class PlayerController : MonoBehaviour
     [Header("Dash")]
     [SerializeField] private bool isClimbing;
     [SerializeField] private float climbSpeed;
+    [SerializeField] private Vector2 boxSize;
+    public LayerMask wallCheckerLayerMask;
 
     public enum FacingDirection
     {
@@ -330,6 +332,18 @@ public class PlayerController : MonoBehaviour
         {
 
             canDash = false;
+        }
+    }
+
+    //climb
+    private void DetectWall()
+    {
+        if(Physics2D.OverlapBox(transform.position, boxSize,0,wallCheckerLayerMask))
+        {
+            if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
+            {
+                isClimbing = true;
+            }
         }
     }
       
