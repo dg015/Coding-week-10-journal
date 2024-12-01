@@ -402,7 +402,7 @@ public class PlayerController : MonoBehaviour
     private void getMouseLocation()
     {
         mouseLocation = Input.mousePosition;
-
+        mouseLocation = Camera.main.ScreenToWorldPoint(mouseLocation);
 
         
     }
