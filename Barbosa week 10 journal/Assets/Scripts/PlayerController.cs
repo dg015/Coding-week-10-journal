@@ -90,10 +90,12 @@ public class PlayerController : MonoBehaviour
     public LayerMask wallCheckerLayerMask;
 
     [Header("RocketJump")]
-    [SerializeField] private Vector2 mouseLocation;
+    [SerializeField] private Vector3 mouseLocation;
     [SerializeField] private float throwForce;
     [SerializeField] private float RocketCooldownTimer;
     [SerializeField] private float RocketCooldownTimerMax;
+    private Vector2 angle;
+    
     public enum FacingDirection
     {
         left, right
@@ -138,7 +140,7 @@ public class PlayerController : MonoBehaviour
 
         checkForGround();
         getMouseLocation();
-
+        RocketJump();
         Vector2 playerInput = new Vector2();
         Vector2 playerInputY = new Vector2();
         playerInputY.y = Input.GetAxisRaw("Vertical");
@@ -403,10 +405,26 @@ public class PlayerController : MonoBehaviour
     {
         mouseLocation = Input.mousePosition;
         mouseLocation = Camera.main.ScreenToWorldPoint(mouseLocation);
+        Debug.DrawLine(transform.position, mouseLocation);
 
-        
+        //subtract to get direction and normalizing to set it to a lenght of 1 
+        Vector2 direction = (mouseLocation - transform.position).normalized;
+
+
+        //get the angle using atan2 to get tangent
+        //angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        angle =  new Vector2(mouseLocation.x - transform.position.x, mouseLocation.y - transform.position.y);
+
+
+
     }
-      
+    private void RocketJump()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            body.AddForce(throwForce * angle, ForceMode2D.Impulse);
+        }
+    }
 }
 
 
