@@ -132,12 +132,15 @@ public class PlayerController : MonoBehaviour
 
 
         checkForGround();
-        DetectWall();
-        climbWall();
-        Vector2 playerInput = new Vector2();
-        playerInput.x = Input.GetAxisRaw("Horizontal");
 
-        if(isDead)
+        
+        Vector2 playerInput = new Vector2();
+        Vector2 playerInputY = new Vector2();
+        playerInputY.y = Input.GetAxisRaw("Vertical");
+        playerInput.x = Input.GetAxisRaw("Horizontal");
+        DetectWall();
+        climbWall(playerInputY);
+        if (isDead)
         {
             currentState = PlayerState.dead;
         }
@@ -150,11 +153,13 @@ public class PlayerController : MonoBehaviour
                 if (!isGrounded) currentState = PlayerState.jumping;
                 else if (velocity.x > 0) currentState = PlayerState.walking;
                 else if (IsDashing) currentState = PlayerState.dahsing;
+                else if (isClimbing) currentState = PlayerState.climbing; 
                 break;
             case PlayerState.walking:
                 if (!isGrounded) currentState = PlayerState.jumping;
                 else if (velocity.x == 0) currentState = PlayerState.idle;
                 else if (IsDashing) currentState = PlayerState.dahsing;
+                else if (isClimbing) currentState = PlayerState.climbing;
                 break;
             case PlayerState.jumping:
                 if(isGrounded)
@@ -162,8 +167,8 @@ public class PlayerController : MonoBehaviour
                     if (velocity.x != 0) currentState = PlayerState.walking;
                     else if (IsDashing) currentState = PlayerState.dahsing;
                     else currentState = PlayerState.idle;
-                    
                 }
+                else if (isClimbing) currentState = PlayerState.climbing;
                 break;
             case PlayerState.dahsing:
                 if(!IsDashing && velocity.x !=0 && isGrounded) 
@@ -178,6 +183,21 @@ public class PlayerController : MonoBehaviour
                 {
                     currentState = PlayerState.idle;
                 }
+                else if (isClimbing) currentState = PlayerState.climbing;
+                break;
+            case PlayerState.climbing:
+                if (!isClimbing && velocity.x != 0 && isGrounded)
+                {
+                    currentState = PlayerState.walking;
+                }
+                else if (!isClimbing && velocity.x != 0 && !isGrounded)
+                {
+                    currentState = PlayerState.jumping;
+                }
+                else if (!isClimbing && velocity.x == 0)
+                {
+                    currentState = PlayerState.idle;
+                }
                 break;
         }
 
@@ -188,13 +208,17 @@ public class PlayerController : MonoBehaviour
         }
 
         body.velocity = velocity;
-        if (!isClimbing)
+
+        if(isClimbing)
         {
-            if (!isGrounded)
-            {
-                velocity.y += gravity * Time.deltaTime;
-            }
+            velocity.y = 0;
         }
+
+        else if (!isGrounded)// in air
+        {
+           velocity.y += gravity * Time.deltaTime;
+        }
+        
         else
         {
             velocity.y = 0;
@@ -357,12 +381,13 @@ public class PlayerController : MonoBehaviour
             isClimbing = false;
         }
     }
-    private void climbWall(Vector2 playerInput)
+    private void climbWall(Vector2 playerInputY)
     {
        if(isClimbing)
         {
-            velocity.y += climbSpeed * playerInput.y * Time.deltaTime;
-
+            
+            velocity.y += climbSpeed * playerInputY.y * Time.deltaTime;
+            Debug.Log(velocity.y);
 
         }
 

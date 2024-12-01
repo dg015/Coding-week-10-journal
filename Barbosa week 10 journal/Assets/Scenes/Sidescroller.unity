@@ -1898,11 +1898,11 @@ MonoBehaviour:
   cooldownMaxTime: 3
   canDash: 1
   isClimbing: 0
-  climbSpeed: 0
-  boxSize: {x: 0, y: 0}
+  climbSpeed: 45
+  boxSize: {x: 1.48, y: 0.42}
   wallCheckerLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
 --- !u!4 &1433354315
 Transform:
   m_ObjectHideFlags: 0
