@@ -118,9 +118,6 @@ public class PlayerController : MonoBehaviour
         InitialJumpSpeed = 2 * apexHeight / apexTime;
     }
 
-
-
-
     // Update is called once per frame
     void Update()
     {
@@ -142,12 +139,16 @@ public class PlayerController : MonoBehaviour
         checkForGround();
         getMouseLocation();
         RocketJump();
+
         Vector2 playerInput = new Vector2();
         Vector2 playerInputY = new Vector2();
+
         playerInputY.y = Input.GetAxisRaw("Vertical");
         playerInput.x = Input.GetAxisRaw("Horizontal");
+
         DetectWall();
         climbWall(playerInputY);
+
         if (isDead)
         {
             currentState = PlayerState.dead;
@@ -217,7 +218,7 @@ public class PlayerController : MonoBehaviour
 
         body.velocity = velocity;
 
-        if(isClimbing)
+        if(isClimbing) // if climbing set velocity 0 so they dont fall down from wall
         {
             velocity.y = 0;
         }
@@ -283,6 +284,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        //gizmos for easier readability
         Gizmos.DrawWireCube(transform.position + Vector3.down * groundCheckOffset,groundCheckSize);
         Gizmos.DrawWireCube(transform.position, boxSize);
     }
@@ -315,7 +317,7 @@ public class PlayerController : MonoBehaviour
         //get input
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            Debug.Log("got into dash timer");
+            
             IsDashing = true;
         }
     }
@@ -359,8 +361,10 @@ public class PlayerController : MonoBehaviour
 
     private void DashCooldown()
     {
-        Debug.Log("fell here");
+        
+        //start timer 
         cooldown += Time.deltaTime;
+        //if cooldown ends allow player to dash again
         if (cooldown >= dashTimeMax && canDash == false)
         {
             canDash = true;
@@ -376,12 +380,13 @@ public class PlayerController : MonoBehaviour
     //climb
     private void DetectWall()
     {
+        //get a overlapbox to check if the player is touching the wall 
         if(Physics2D.OverlapBox(transform.position, boxSize,0,wallCheckerLayerMask))
         {
+            //if the player is presses any of these keys when near a wall set climbing as true 
             if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
             {
                 isClimbing = true;
-
             }
         }
         else
@@ -393,7 +398,7 @@ public class PlayerController : MonoBehaviour
     {
        if(isClimbing)
         {
-            
+            //aplpy speed on the Y so the player feels like they're climbing up or down
             velocity.y += climbSpeed * playerInputY.y * Time.deltaTime;
             Debug.Log(velocity.y);
 
@@ -404,21 +409,25 @@ public class PlayerController : MonoBehaviour
     // RocketJump
     private void getMouseLocation()
     {
+        //get the mouse location and and lock it to the screen
         mouseLocation = Input.mousePosition;
         mouseLocation = Camera.main.ScreenToWorldPoint(mouseLocation);
         Debug.DrawLine(transform.position, mouseLocation);
 
+        //get the new direction
         Vector2 directionMouse =  new Vector2(mouseLocation.x - transform.position.x, mouseLocation.y - transform.position.y);
 
+        //Invert it os the force is applied in the oposite direciton, making it feel like an action recoil
         angle = - directionMouse.normalized;
     }
     private void RocketJump()
     {
         if (Input.GetMouseButtonDown(0))
         {
+            //get a ray for debuging 
             Debug.DrawRay(transform.position, angle * throwForce, Color.blue, 1f);
 
-            Debug.Log("boom Im flying");
+            //add force
             body.AddForce((10*throwForce) * angle, ForceMode2D.Force);
 
         }
