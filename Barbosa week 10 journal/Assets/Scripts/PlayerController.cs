@@ -74,9 +74,8 @@ public class PlayerController : MonoBehaviour
     [Header("Dash")]
     [SerializeField] private bool IsDashing;
     [SerializeField] private float dashMultiplier;
-    [SerializeField] private float DashTimer;
-    [SerializeField] private float DashMaxTimer;
-    [SerializeField] private float dashDuration;
+    [SerializeField] private float dashTime;
+    [SerializeField] private float dashTimeMax;
 
 
     public enum FacingDirection
@@ -156,9 +155,12 @@ public class PlayerController : MonoBehaviour
                 break;
         }
 
+        if(!IsDashing)
+        {
+            MovementUpdate(playerInput);
+            jumpUpdate();
+        }
 
-        MovementUpdate(playerInput);
-        jumpUpdate();
         body.velocity = velocity;
 
         if(!isGrounded)
@@ -247,29 +249,15 @@ public class PlayerController : MonoBehaviour
     }
 
     //Dash
-
-
-
     private void GetDashInput()
     {
         //get input
-        if (Input.GetButtonDown("Horizontal"))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            //start timer
-            DashTimer += Time.deltaTime;
-            if (DashTimer >= DashMaxTimer) // if during window
-            {
-                //check if pressed the button again
-                if (Input.GetButtonDown("Horixaontal"))
-                {
-                    IsDashing = true;
-                }
-
-            }
-            else // set it back to 0
-            {
-                DashTimer = 0;
-            }
+            Debug.Log("got into dash timer");
+            IsDashing = true;
+                    
+            
         }
     }
 
@@ -277,30 +265,30 @@ public class PlayerController : MonoBehaviour
     {
         if(IsDashing)//check if dashing
         {
-            dashDuration += Time.deltaTime; // increase timer
+            dashTime += Time.deltaTime; // increase timer
             if (currentDirection == FacingDirection.right)
             {
-                if (dashDuration < 1) // check if timer is done
+                if (dashTime < dashTimeMax) // check if timer is done
                 {
                     velocity.x += accelerationRate * dashMultiplier * Time.deltaTime;
                     Debug.Log("right");
                 }
                 else // if timer is done set dashing off
                 {
-                    dashDuration = 0;
+                    dashTime = 0;
                     IsDashing = false;
                 }
             }
              else if (currentDirection == FacingDirection.left)
              {
-                if (dashDuration < 1)// check if timer is done
+                if (dashTime < dashTimeMax)// check if timer is done
                 {
                     velocity.x += accelerationRate * (-1 * dashMultiplier) * Time.deltaTime;
                     Debug.Log("left");
                 }
                 else // if timer is done set dashing off
                 {
-                    dashDuration = 0;
+                    dashTime = 0;
                     IsDashing = false;
                 }
              }
@@ -308,7 +296,7 @@ public class PlayerController : MonoBehaviour
     }
 
       
-    }
+}
 
 
 
