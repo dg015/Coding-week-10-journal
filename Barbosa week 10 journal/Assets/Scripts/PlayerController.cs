@@ -72,11 +72,15 @@ public class PlayerController : MonoBehaviour
     public PlayerState previousState = PlayerState.idle;
 
     [Header("Dash")]
+    //physics and dash 
     [SerializeField] private bool IsDashing;
     [SerializeField] private float dashMultiplier;
     [SerializeField] private float dashTime;
     [SerializeField] private float dashTimeMax;
-
+    //dash cooldown
+    [SerializeField] private float cooldown;
+    [SerializeField] private float cooldownMaxTime;
+    [SerializeField] private bool canDash;
 
     public enum FacingDirection
     {
@@ -295,6 +299,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void DashCooldown()
+    {
+        dashTime += Time.deltaTime;
+    }
       
 }
 
