@@ -74,6 +74,9 @@ public class PlayerController : MonoBehaviour
     [Header("Dash")]
     [SerializeField] private bool IsDashing;
     [SerializeField] private float dashMultiplier;
+    [SerializeField] private float DashTimer;
+    [SerializeField] private float DashMaxTimer;
+    [SerializeField] private float dashDuration;
 
 
     public enum FacingDirection
@@ -104,7 +107,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         previousState = currentState;
-
+        GetDashInput();
         checkForGround();
         Vector2 playerInput = new Vector2();
         playerInput.x = Input.GetAxisRaw("Horizontal");
@@ -240,18 +243,68 @@ public class PlayerController : MonoBehaviour
     }
 
     //Dash
-    private void Dash()
+
+
+
+    private void GetDashInput()
     {
-        if (currentDirection == FacingDirection.right)
+        //get input
+        if (Input.GetButtonDown("Horizontal"))
         {
-            Debug.Log("right");
-        }
-        else if( currentDirection == FacingDirection.left) 
-        {
-            Debug.Log("left");
+            //start timer
+            DashTimer += Time.deltaTime;
+            if (DashTimer >= DashMaxTimer) // if during window
+            {
+                //check if pressed the button again
+                if (Input.GetButtonDown("Horixaontal"))
+                {
+                    IsDashing = true;
+                }
+
+            }
+            else // set it back to 0
+            {
+                DashTimer = 0;
+            }
         }
     }
 
+    private void applyDash()
+    {
+        if(IsDashing)
+        {
+            dashDuration += Time.deltaTime;
+            if (currentDirection == FacingDirection.right)
+            {
+
+                if (dashDuration < 1)
+                {
+                    velocity.x += accelerationRate * dashMultiplier * Time.deltaTime;
+                    Debug.Log("right");
+                }
+                {
+                    dashDuration = 0;
+                    IsDashing = false;
+                }
+            }
+             else if (currentDirection == FacingDirection.left)
+             {
+                if (dashDuration < 1)
+                {
+                    velocity.x += accelerationRate * (-1 * dashMultiplier) * Time.deltaTime;
+                    Debug.Log("left");
+                }
+                else
+                {
+                    dashDuration = 0;
+                    IsDashing = false;
+                }
+             }
+        }
+    }
+
+      
+    }
 
 
 
@@ -373,4 +426,4 @@ public FacingDirection GetFacingDirection()
         return currentDirection;
 }
 * */
-}
+
