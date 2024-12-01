@@ -75,6 +75,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool IsDashing;
     [SerializeField] private float dashMultiplier;
 
+
     public enum FacingDirection
     {
         left, right
@@ -82,7 +83,7 @@ public class PlayerController : MonoBehaviour
 
     public enum PlayerState
     { 
-        idle, walking, jumping, dead
+        idle, walking, jumping, dead, dahsing
     }
 
     // Start is called before the first frame update
@@ -130,6 +131,20 @@ public class PlayerController : MonoBehaviour
                 {
                     if (velocity.x != 0) currentState = PlayerState.walking;
                     else currentState = PlayerState.idle;
+                }
+                break;
+            case PlayerState.dahsing:
+                if(!IsDashing && velocity.x !=0 && isGrounded) 
+                { 
+                    currentState = PlayerState.walking;
+                }
+                else if (!IsDashing && velocity.x != 0 && !isGrounded)
+                {
+                    currentState = PlayerState.jumping;
+                }
+                else if (!IsDashing &&velocity.x == 0)
+                {
+                    currentState = PlayerState.idle;
                 }
                 break;
         }

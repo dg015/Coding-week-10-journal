@@ -10,6 +10,8 @@ public class PlayerVisuals : MonoBehaviour
     private readonly int IdleHash = Animator.StringToHash("Idle");
     private readonly int DeadHash = Animator.StringToHash("Dead");
     private readonly int jumpingHash = Animator.StringToHash("Jumping");
+    private readonly int dashHash = Animator.StringToHash("Dashing");
+
 
     void Update()
     {
@@ -44,6 +46,9 @@ public class PlayerVisuals : MonoBehaviour
                     break;
                 case PlayerController.PlayerState.dead:
                     animator.CrossFade(DeadHash, 0);
+                    break;
+                case PlayerController.PlayerState.dahsing:
+                    animator.CrossFade(dashHash, 0);
                     break;
                 default:
                     break;
