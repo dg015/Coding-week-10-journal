@@ -110,7 +110,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         previousState = currentState;
-        GetDashInput();
+        if (canDash)
+        {
+            GetDashInput();
+        }
         if(IsDashing)
         {
             applyDash();
@@ -276,6 +279,7 @@ public class PlayerController : MonoBehaviour
                 {
                     velocity.x += accelerationRate * dashMultiplier * Time.deltaTime;
                     Debug.Log("right");
+                    DashCooldown();
                 }
                 else // if timer is done set dashing off
                 {
@@ -289,6 +293,7 @@ public class PlayerController : MonoBehaviour
                 {
                     velocity.x += accelerationRate * (-1 * dashMultiplier) * Time.deltaTime;
                     Debug.Log("left");
+                    DashCooldown();
                 }
                 else // if timer is done set dashing off
                 {
@@ -302,6 +307,15 @@ public class PlayerController : MonoBehaviour
     private void DashCooldown()
     {
         dashTime += Time.deltaTime;
+        if (dashTime >= dashTimeMax && canDash == false)
+        {
+            canDash = true;
+            dashTime = 0;
+        }
+        else
+        {
+            canDash = false;
+        }
     }
       
 }
