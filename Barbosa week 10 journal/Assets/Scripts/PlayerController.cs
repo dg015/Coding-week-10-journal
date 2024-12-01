@@ -240,6 +240,18 @@ public class PlayerController : MonoBehaviour
     }
 
     //Dash
+    private void Dash()
+    {
+        if (currentDirection == FacingDirection.right)
+        {
+            Debug.Log("right");
+        }
+        else if( currentDirection == FacingDirection.left) 
+        {
+            Debug.Log("left");
+        }
+    }
+
 
 
 
