@@ -1925,6 +1925,7 @@ MonoBehaviour:
   decelerationTime: 0.25
   apexHeight: 3
   apexTime: 0.5
+  terminalSpeed: 10
   currentDirection: 0
   groundCheckOffset: 0.5
   groundCheckSize: {x: 0.4, y: 0.34}

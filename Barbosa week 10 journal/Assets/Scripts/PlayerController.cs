@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
     public float apexTime = 5;
     private float accelerationRate;
     private float decelerationRate;
-
+    [SerializeField] private float terminalSpeed;
 
     private Vector2 velocity;
     [SerializeField] private FacingDirection currentDirection;
@@ -97,11 +97,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float RocketCooldownTimerMax;
     private Vector2 angle;
     
+    //directions in which the player can face
     public enum FacingDirection
     {
         left, right
     }
 
+    //player states 
     public enum PlayerState
     { 
         idle, walking, jumping, dead, dahsing, climbing
@@ -110,8 +112,9 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //set  gravity to 0
         body.gravityScale = 0;
-        //rb = GetComponent<Rigidbody2D>();
+        //use formula to get the speed ( aceleration , decelaration, graivty and jump speed)
         accelerationRate = maxSpeed / accelerationTime;
         decelerationRate = maxSpeed / decelerationTime;
         gravity = -2 * apexHeight / (apexTime * apexTime);
@@ -121,17 +124,21 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //set previous state as the current one
         previousState = currentState;
         if (!canDash)
         {
+            //if cant dash go on cooldown
             DashCooldown();
         }
         if (canDash)
         {
+            //if can dash get input to check if youre going to
             GetDashInput();
         }
         if(IsDashing)
         {
+            //if youre pressed the inputs then dash
             applyDash();
         }
 
@@ -140,14 +147,17 @@ public class PlayerController : MonoBehaviour
         getMouseLocation();
         RocketJump();
 
+        //get the player X and Y input
         Vector2 playerInput = new Vector2();
         Vector2 playerInputY = new Vector2();
 
+        //get the players horizontal and vertical input
         playerInputY.y = Input.GetAxisRaw("Vertical");
         playerInput.x = Input.GetAxisRaw("Horizontal");
 
         DetectWall();
         climbWall(playerInputY);
+
 
         if (isDead)
         {
@@ -158,18 +168,28 @@ public class PlayerController : MonoBehaviour
         {
             case PlayerState.dead:
                 break;
+
+
+                //if the playyer is still then enter idle
             case PlayerState.idle:
                 if (!isGrounded) currentState = PlayerState.jumping;
                 else if (velocity.x > 0) currentState = PlayerState.walking;
+                else if (velocity.x < 0) currentState = PlayerState.walking;
                 else if (IsDashing) currentState = PlayerState.dahsing;
                 else if (isClimbing) currentState = PlayerState.climbing; 
                 break;
+
+
+                //if the player is moving on the ground then enter walking
             case PlayerState.walking:
                 if (!isGrounded) currentState = PlayerState.jumping;
                 else if (velocity.x == 0) currentState = PlayerState.idle;
                 else if (IsDashing) currentState = PlayerState.dahsing;
                 else if (isClimbing) currentState = PlayerState.climbing;
                 break;
+
+                
+                //if the player is jumping or falling enter jumping
             case PlayerState.jumping:
                 if(isGrounded)
                 {
@@ -179,6 +199,9 @@ public class PlayerController : MonoBehaviour
                 }
                 else if (isClimbing) currentState = PlayerState.climbing;
                 break;
+
+
+                //if the player is dashing on the ground enter dashing
             case PlayerState.dahsing:
                 if(!IsDashing && velocity.x !=0 && isGrounded) 
                 { 
@@ -194,6 +217,9 @@ public class PlayerController : MonoBehaviour
                 }
                 else if (isClimbing) currentState = PlayerState.climbing;
                 break;
+
+
+                //if the player is climbing wall enter climbing
             case PlayerState.climbing:
                 if (!isClimbing && velocity.x != 0 && isGrounded)
                 {
@@ -225,7 +251,8 @@ public class PlayerController : MonoBehaviour
 
         else if (!isGrounded)// in air
         {
-           velocity.y += gravity * Time.deltaTime;
+            velocity.y += gravity * Time.deltaTime;
+            velocity.y = Mathf.Max(velocity.y, -terminalSpeed);
         }
         
         else
@@ -240,15 +267,18 @@ public class PlayerController : MonoBehaviour
     {
         if (playerInput.x < 0)
         {
+            //if the input is negative theyre facing the left
             currentDirection = FacingDirection.left;
         }
         else if(playerInput.x >0)
         {
+            //if the input is positive theyre facing the right
             currentDirection = FacingDirection.right;
         }
 
         if (playerInput.x != 0)
         {
+            //acelerating and clamping the player speed 
             velocity.x += accelerationRate * playerInput.x * Time.deltaTime;
             velocity.x = Mathf.Clamp(velocity.x, -maxSpeed, maxSpeed);
         }
@@ -256,11 +286,13 @@ public class PlayerController : MonoBehaviour
         {
             if (velocity.x > 0)
             {
+                //decelerating on the right and limiting the max speed
                 velocity.x -= decelerationRate * Time.deltaTime;
                 velocity.x = Mathf.Max(velocity.x, 0);
             }
             else if(velocity.x < 0)
             {
+                //decelerating on the left and limiting the max speed
                 velocity.x += decelerationRate * Time.deltaTime;
                 velocity.x = Mathf.Min(velocity.x, 0);
             }
@@ -272,6 +304,7 @@ public class PlayerController : MonoBehaviour
     {
         if ( isGrounded && Input.GetButton("Jump"))
         {
+            //if the player is grounded and presses thekey to jump apply initial jump speed and set them as not grounded anymore
             velocity.y = InitialJumpSpeed;
             isGrounded = false;
         }
@@ -279,6 +312,7 @@ public class PlayerController : MonoBehaviour
 
     private void checkForGround()
     {
+        //check if the player overlap box touches the ground with the layer ground then return true if so
         isGrounded = Physics2D.OverlapBox(transform.position + Vector3.down * groundCheckOffset,groundCheckSize,0,groundCheckLayerMask);
     }
 
@@ -291,6 +325,7 @@ public class PlayerController : MonoBehaviour
 
     public bool IsWalking()
     {
+        //if the player velocity is not 0 then theyre walking
         if (body.velocity.x !=0)
         {
             return true;
@@ -303,11 +338,13 @@ public class PlayerController : MonoBehaviour
     }
     public bool IsGrounded()
     {
+        //if the player is grounded return true
         return isGrounded;
     }
 
     public FacingDirection GetFacingDirection()
     {
+        //return the direction the player is currently facing
         return currentDirection;
     }
 
