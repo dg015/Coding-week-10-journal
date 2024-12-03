@@ -1920,7 +1920,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 1433354317}
-  maxSpeed: 5
+  maxSpeed: 7
   accelerationTime: 0.25
   decelerationTime: 0.25
   apexHeight: 3
@@ -1942,7 +1942,7 @@ MonoBehaviour:
   cooldownMaxTime: 3
   canDash: 1
   isClimbing: 0
-  climbSpeed: 25
+  climbSpeed: 150
   boxSize: {x: 1.65, y: 0.65}
   wallCheckerLayerMask:
     serializedVersion: 2
