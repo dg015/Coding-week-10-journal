@@ -1934,23 +1934,16 @@ MonoBehaviour:
     m_Bits: 64
   currentState: 0
   previousState: 0
-  IsDashing: 0
   dashMultiplier: 5
   dashTime: 0
-  dashTimeMax: 0.25
   cooldown: 0
-  cooldownMaxTime: 3
-  canDash: 1
-  isClimbing: 0
   climbSpeed: 150
   boxSize: {x: 1.65, y: 0.65}
   wallCheckerLayerMask:
     serializedVersion: 2
     m_Bits: 128
-  mouseLocation: {x: 0, y: 0}
   throwForce: 450
-  RocketCooldownTimer: 0
-  RocketCooldownTimerMax: 0
+  RocketCooldownTimerMax: 1
 --- !u!4 &1433354315
 Transform:
   m_ObjectHideFlags: 0

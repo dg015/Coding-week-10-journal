@@ -72,30 +72,30 @@ public class PlayerController : MonoBehaviour
     public PlayerState currentState = PlayerState.idle;
     public PlayerState previousState = PlayerState.idle;
 
-    [Header("Dash")]
+
     //physics and dash 
-    [SerializeField] private bool IsDashing;
+    [Header("Dash")]
+    private bool IsDashing;
     [SerializeField] private float dashMultiplier;
     [SerializeField] private float dashTime;
-    [SerializeField] private float dashTimeMax;
+    private float dashTimeMax;
     //dash cooldown
     [SerializeField] private float cooldown;
-    [SerializeField] private float cooldownMaxTime;
-    [SerializeField] private bool canDash = true;
+    private bool canDash = true;
 
 
     [Header("wall climb")]
-    [SerializeField] private bool isClimbing;
+    private bool isClimbing;
     [SerializeField] private float climbSpeed;
     [SerializeField] private Vector2 boxSize;
     public LayerMask wallCheckerLayerMask;
 
     [Header("RocketJump")]
-    [SerializeField] private Vector2 mouseLocation;
+    private Vector2 mouseLocation;
     [SerializeField] private float throwForce;
-    [SerializeField] private float RocketCooldownTimer;
+    private float RocketCooldownTimer;
     [SerializeField] private float RocketCooldownTimerMax;
-    [SerializeField] private bool canRocketJump;
+    private bool canRocketJump;
     private Vector2 angle;
     
     //directions in which the player can face
