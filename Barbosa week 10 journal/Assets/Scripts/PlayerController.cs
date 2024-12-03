@@ -121,6 +121,55 @@ public class PlayerController : MonoBehaviour
         InitialJumpSpeed = 2 * apexHeight / apexTime;
     }
 
+
+
+    private void FixedUpdate()
+    {
+        if (IsDashing)
+        {
+            //if youre pressed the inputs then dash
+            applyDash();
+        }
+        RocketJump();
+
+        //get the player X and Y input
+        Vector2 playerInput = new Vector2();
+        Vector2 playerInputY = new Vector2();
+
+        //get the players horizontal and vertical input
+        playerInput.x = Input.GetAxisRaw("Horizontal");
+        playerInputY.y = Input.GetAxisRaw("Vertical");
+
+        climbWall(playerInputY);
+
+        if (!IsDashing)
+        {
+            MovementUpdate(playerInput);
+            jumpUpdate();
+            //Clamps the player speed when they're not dashing to not keep the momentum
+            velocity.x = Mathf.Clamp(velocity.x,-maxSpeed, maxSpeed);
+        }
+
+        body.velocity = velocity;
+
+        if (isClimbing) // if climbing set velocity 0 so they dont fall down from wall
+        {
+            velocity.y = 0;
+        }
+
+        else if (!isGrounded)// in air
+        {
+            velocity.y += gravity * Time.deltaTime;
+            velocity.y = Mathf.Max(velocity.y, -terminalSpeed);
+        }
+
+        else
+        {
+            velocity.y = 0;
+        }
+
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -136,29 +185,9 @@ public class PlayerController : MonoBehaviour
             //if can dash get input to check if youre going to
             GetDashInput();
         }
-        if(IsDashing)
-        {
-            //if youre pressed the inputs then dash
-            applyDash();
-        }
-
-
         checkForGround();
         getMouseLocation();
-        RocketJump();
-
-        //get the player X and Y input
-        Vector2 playerInput = new Vector2();
-        Vector2 playerInputY = new Vector2();
-
-        //get the players horizontal and vertical input
-        playerInputY.y = Input.GetAxisRaw("Vertical");
-        playerInput.x = Input.GetAxisRaw("Horizontal");
-
         DetectWall();
-        climbWall(playerInputY);
-
-
         if (isDead)
         {
             currentState = PlayerState.dead;
@@ -236,31 +265,6 @@ public class PlayerController : MonoBehaviour
                 break;
         }
 
-        if(!IsDashing)
-        {
-            MovementUpdate(playerInput);
-            jumpUpdate();
-        }
-
-        body.velocity = velocity;
-
-        if(isClimbing) // if climbing set velocity 0 so they dont fall down from wall
-        {
-            velocity.y = 0;
-        }
-
-        else if (!isGrounded)// in air
-        {
-            velocity.y += gravity * Time.deltaTime;
-            velocity.y = Mathf.Max(velocity.y, -terminalSpeed);
-        }
-        
-        else
-        {
-            velocity.y = 0;
-        }
-
-       
     }
 
     private void MovementUpdate(Vector2 playerInput)
