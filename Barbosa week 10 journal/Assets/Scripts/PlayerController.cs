@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float accelerationTime = 0.25f;
     [SerializeField] private float decelerationTime = 0.15f;
 
-    [Header("Verital")]
+    [Header("Vertical")]
     public float apexHeight = 3f;
     public float apexTime = 5;
     private float accelerationRate;
