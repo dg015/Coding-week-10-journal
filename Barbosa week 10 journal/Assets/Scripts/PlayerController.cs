@@ -95,6 +95,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float throwForce;
     [SerializeField] private float RocketCooldownTimer;
     [SerializeField] private float RocketCooldownTimerMax;
+    [SerializeField] private bool canRocketJump;
     private Vector2 angle;
     
     //directions in which the player can face
@@ -121,7 +122,21 @@ public class PlayerController : MonoBehaviour
         InitialJumpSpeed = 2 * apexHeight / apexTime;
     }
 
+    private void RocketJumpCooldown()
+    {
+        if(!canRocketJump)
+        {
+            //start timer 
+            RocketCooldownTimer += Time.deltaTime;
+        }
 
+        //if cooldown ends allow player to rocketJump again
+        if (RocketCooldownTimer >= RocketCooldownTimerMax && canRocketJump == false)
+        {
+            canRocketJump = true;
+            RocketCooldownTimer = 0;
+        }
+    }
 
     private void FixedUpdate()
     {
@@ -170,9 +185,13 @@ public class PlayerController : MonoBehaviour
 
     }
 
+
+
+
     // Update is called once per frame
     void Update()
     {
+        RocketJumpCooldown();
         //set previous state as the current one
         previousState = currentState;
         if (!canDash)
@@ -463,15 +482,17 @@ public class PlayerController : MonoBehaviour
     }
     private void RocketJump()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && canRocketJump)
         {
+            
             //get a ray for debuging 
             Debug.DrawRay(transform.position, angle * throwForce, Color.blue, 1f);
 
             //add force
             body.AddForce((10*throwForce) * angle, ForceMode2D.Force);
-
+            canRocketJump = false;
         }
+
     }
 }
 
