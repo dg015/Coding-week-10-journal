@@ -1943,7 +1943,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   throwForce: 450
-  RocketCooldownTimerMax: 1
+  RocketCooldownTimerMax: 0.75
 --- !u!4 &1433354315
 Transform:
   m_ObjectHideFlags: 0
