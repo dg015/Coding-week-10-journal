@@ -1934,9 +1934,12 @@ MonoBehaviour:
     m_Bits: 64
   currentState: 0
   previousState: 0
+  IsDashing: 0
   dashMultiplier: 5
   dashTime: 0
-  cooldown: 0
+  dashTimeMax: 0.25
+  cooldown: 1
+  canDash: 1
   climbSpeed: 150
   boxSize: {x: 1.65, y: 0.65}
   wallCheckerLayerMask:
