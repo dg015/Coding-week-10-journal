@@ -40,6 +40,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float CoyoteTimeMax = 2;
     [SerializeField] private float CoyoteTime;
 
+
+
+
+
     */
 
     [Header("Physics")]
@@ -75,13 +79,13 @@ public class PlayerController : MonoBehaviour
 
     //physics and dash 
     [Header("Dash")]
-    private bool IsDashing;
+    [SerializeField] private bool IsDashing;
     [SerializeField] private float dashMultiplier;
     [SerializeField] private float dashTime;
-    private float dashTimeMax;
+    [SerializeField]private float dashTimeMax;
     //dash cooldown
     [SerializeField] private float cooldown;
-    private bool canDash = true;
+    [SerializeField] private bool canDash = true;
 
 
     [Header("wall climb")]
